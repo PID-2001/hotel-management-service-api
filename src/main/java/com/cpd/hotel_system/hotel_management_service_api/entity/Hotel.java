@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "hotel")
@@ -42,14 +43,7 @@ public class Hotel {
     @Column(name = "starting_from", precision = 10, scale = 2)
     private BigDecimal startingFrom;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
+    @OneToMany(mappedBy = "hotel" , cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Branch> branches;
 
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }

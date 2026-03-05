@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "branch")
 @Data
@@ -21,14 +23,22 @@ public class Branch {
     @Column(name = "room_count", nullable = false)
     private int roomCount;
 
-    @Column(name = "branch_type", length = 15, nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "branch_type")
     private BranchType branchType;
 
     @Column(name = "branch_name", length = 100, nullable = false)
     private String branchName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
+
+    @OneToOne(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    private Address address;
+
+    @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL)
+    private List<Room> rooms;
+
 
 }
