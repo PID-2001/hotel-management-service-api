@@ -1,0 +1,14 @@
+package com.cpd.hotel_system.hotel_management_service_api.api;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/hotel-management-service-api/api/v1/test")
+public class TestController {
+    @RequestMapping("/check")
+    public String hello() {
+        return "Hello, World!";
+    }
+
+}
