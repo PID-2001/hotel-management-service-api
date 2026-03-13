@@ -21,4 +21,5 @@ public class ResponseHotelDto {
     private Boolean activeStatus;
     private BigDecimal startingFrom;
     private List<ResponseBranchDto> branches;
+
 }
