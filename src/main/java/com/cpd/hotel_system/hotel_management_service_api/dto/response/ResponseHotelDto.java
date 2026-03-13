@@ -20,5 +20,5 @@ public class ResponseHotelDto {
     private LocalDateTime updatedAt;
     private Boolean activeStatus;
     private BigDecimal startingFrom;
-//    private List<ResponseBranchDto> branches;
+    private List<ResponseBranchDto> branches;
 }
